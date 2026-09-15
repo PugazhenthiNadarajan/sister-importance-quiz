@@ -1,0 +1,16 @@
+{
+  "name": "sister-verification-quiz",
+  "version": "1.0.0",
+  "description": "Sister Verification & Importance Quiz Web App for Pugazh (Hosted on Vercel)",
+  "private": true,
+  "scripts": {
+    "start": "python -m http.server 3000"
+  },
+  "keywords": [
+    "sister-quiz",
+    "tanglish",
+    "vercel"
+  ],
+  "author": "Pugazh",
+  "license": "MIT"
+}

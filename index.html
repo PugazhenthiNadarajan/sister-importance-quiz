@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sister Verification & Importance Test 😂❤️</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    @keyframes pulse-subtle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .pulse-card {
+      animation: pulse-subtle 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-purple-950 to-pink-950 min-h-screen flex items-center justify-center p-3 sm:p-6 font-sans text-white selection:bg-pink-500 selection:text-white">
+
+  <!-- Main Card Container -->
+  <div class="max-w-xl w-full bg-white/10 backdrop-blur-xl rounded-3xl p-5 sm:p-8 border border-white/20 shadow-2xl relative overflow-hidden">
+    
+    <!-- Top Decorative Glow -->
+    <div class="absolute -top-16 -right-16 w-36 h-36 bg-pink-500/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-purple-500/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Header Section -->
+    <header class="text-center mb-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 border border-pink-400/30 text-pink-300 text-xs font-semibold uppercase tracking-wider mb-2">
+        <span>👑 Sister Lie-Detector Test</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-200 to-indigo-200">
+        Pugazh Importance Meter 🕵️‍♂️
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-300 mt-1 max-w-md mx-auto">
+        Sontha Brother, College Seniors, Lover, Best Friend... ivlo perula Pugazh unakku evlo mukkiyam? Unmai mattum sollanum! 😜
+      </p>
+
+      <!-- Progress Tracker -->
+      <div class="mt-4">
+        <div class="flex justify-between text-xs font-medium text-pink-200 mb-1 px-1">
+          <span id="question-indicator">Question 1 of 7</span>
+          <span id="score-peek" class="opacity-70">Truth Meter Active ⚡</span>
+        </div>
+        <div class="w-full bg-white/15 h-2.5 rounded-full overflow-hidden p-0.5 border border-white/10">
+          <div id="progress-bar" class="bg-gradient-to-r from-pink-500 to-indigo-400 h-full rounded-full transition-all duration-300 ease-out" style="width: 14%;"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Question View -->
+    <main id="quiz-container" class="relative z-10 transition-all duration-300">
+      <div id="question-box" class="space-y-4">
+        <!-- Dynamic Questions loaded here -->
+      </div>
+    </main>
+
+    <!-- Result / Sending Screen -->
+    <section id="result-container" class="hidden text-center space-y-6 relative z-10">
+      
+      <!-- Loading / Sending State -->
+      <div id="loading-state" class="py-10 space-y-4">
+        <div class="relative w-16 h-16 mx-auto">
+          <div class="animate-spin w-16 h-16 border-4 border-pink-400 border-t-transparent rounded-full"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-lg">💌</div>
+        </div>
+        <h3 class="text-xl font-bold text-pink-200">Decoding Unoda Answers...</h3>
+        <p class="text-xs sm:text-sm text-gray-300 max-w-sm mx-auto">
+          Pugazh-oda mail ku secret report generate aagi pogudhu... No backing out now! 🏃‍♂️💨
+        </p>
+      </div>
+
+      <!-- Final Verdict Screen -->
+      <div id="final-screen" class="hidden space-y-5 text-left">
+        
+        <!-- Score Card Banner -->
+        <div class="text-center p-5 rounded-2xl bg-gradient-to-b from-white/15 to-white/5 border border-white/25 shadow-lg space-y-2">
+          <div id="result-badge" class="inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-pink-500/40 border border-pink-300 text-pink-100 mb-1"></div>
+          <h2 id="result-title" class="text-2xl sm:text-3xl font-black text-yellow-300"></h2>
+          <div class="flex items-center justify-center gap-2 text-sm text-gray-200">
+            <span>Score:</span>
+            <span id="final-score" class="font-extrabold text-pink-300 text-lg"></span>
+            <span>/ 35</span>
+            <span id="score-percentage" class="text-xs bg-white/20 px-2 py-0.5 rounded-md text-pink-200 font-semibold"></span>
+          </div>
+          <p id="result-desc" class="text-sm text-gray-200 pt-2 leading-relaxed text-center"></p>
+        </div>
+
+        <!-- Priority Breakdown vs Others -->
+        <div class="p-4 rounded-2xl bg-black/30 border border-white/15 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-pink-300 flex items-center gap-1.5">
+            <span>📊</span> Pugazh's Standing vs Your Circle
+          </h4>
+          <div class="space-y-2 text-xs">
+            <div id="rank-blood" class="flex justify-between items-center p-2 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-gray-300">🩸 Sontha Brother:</span>
+              <span class="font-bold text-emerald-400">Equal Family Status 🫂</span>
+            </div>
+            <div id="rank-lover" class="flex justify-between items-center p-2 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-gray-300">❤️ Lover:</span>
+              <span class="font-bold text-pink-400">No Interference, Respect Level 💯</span>
+            </div>
+            <div id="rank-seniors" class="flex justify-between items-center p-2 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-gray-300">🎓 College Seniors:</span>
+              <span class="font-bold text-yellow-400">Way Above Casual Seniors 🚀</span>
+            </div>
+            <div id="rank-bestie" class="flex justify-between items-center p-2 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-gray-300">🤝 Best Boy Friend:</span>
+              <span class="font-bold text-indigo-300">Unique Brother Category 🌟</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Status Box -->
+        <div class="p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-start gap-3">
+          <span class="text-emerald-400 text-lg">✅</span>
+          <div class="text-xs">
+            <p class="font-bold text-emerald-200">Report Sent to Pugazh's Mailbox!</p>
+            <p class="text-emerald-100/80 mt-0.5">Delivered to: <code class="font-mono bg-black/30 px-1 py-0.5 rounded text-pink-200">pugazh2006nadarajan@gmail.com</code></p>
+          </div>
+        </div>
+
+        <!-- Quick Share / Backup Actions -->
+        <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
+          <button id="whatsapp-btn" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 active:scale-95">
+            <span>💬</span> Share Verdict on WhatsApp
+          </button>
+          <button id="mail-btn" class="py-2.5 px-4 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold text-xs border border-white/20 transition flex items-center justify-center gap-2 active:scale-95">
+            <span>✉️</span> Open Email Copy
+          </button>
+        </div>
+
+        <!-- Restart Button -->
+        <div class="text-center pt-2">
+          <button onclick="restartQuiz()" class="text-xs text-pink-300/80 hover:text-pink-200 underline">
+            Oru vela thappa choose pannitiya? Retake Quiz 🔄
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-6 text-center text-[11px] text-gray-400/80 border-t border-white/10 pt-3 relative z-10">
+      Made with curiosity & affection for my sister ✨ | Accidental 3-Month Bond ❤️
+    </footer>
+
+  </div>
+
+  <script>
+    // Configuration
+    const TARGET_EMAIL = "pugazh2006nadarajan@gmail.com";
+    const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
+
+    // 7 Punchy, Tanglish Questions targeting Sontha Brother, College Seniors, Lover, Best Friend & Pugazh
+    const questions = [
+      {
+        id: 1,
+        category: "3-Month Flashback",
+        question: "1. Namma meet panni just 3 months dhaan aagudhu... adhuvum accidental meeting! But un mind-la en place enna?",
+        tag: "Initial Bond",
+        options: [
+          { text: "Just random casual acquaintance dhaan pa, nothing deep.", points: 1 },
+          { text: "College senior madhiri oru useful brother guide.", points: 2 },
+          { text: "Bestie circle-la oru nalla friend category.", points: 3 },
+          { text: "3 months nu sonna yarum namba maattanga, koodave porandhadha vida special bro! ❤️", points: 5 }
+        ]
+      },
+      {
+        id: 2,
+        category: "Emergency & Confidentiality",
+        question: "2. Unakku oru sema periya problem or super secret gossip share pannanum na, un first call yaaruku pogum?",
+        tag: "Trust Meter",
+        options: [
+          { text: "En Lover ku dhaan first preference!", points: 2 },
+          { text: "En Bestie or College seniors ku share pannuven.", points: 2 },
+          { text: "En sontha brother ku dhaan solluven.", points: 3 },
+          { text: "First Pugazh kitta dhaan direct-ah solli advise kepen! 🔥", points: 5 }
+        ]
+      },
+      {
+        id: 3,
+        category: "Lover vs Pugazh Call",
+        question: "3. Lover kooda serious-ah call/date-la irukkumbothu Pugazh kitta irundhu call vandha enna pannuva?",
+        tag: "Priority Dilemma",
+        options: [
+          { text: "Cut pannitu silent-la pottuduven, lover dhaan mukkiyam.", points: 1 },
+          { text: "Lover kitta pesi mudichittu apram leisurely koopduven.", points: 2 },
+          { text: "'Wait da, Pugazh call panran' nu soltu attend pannuven.", points: 4 },
+          { text: "Pugazh call cut panna maaten, edhachu emergency-ah nu immediately pick pannuven! ⚡", points: 5 }
+        ]
+      },
+      {
+        id: 4,
+        category: "College Seniors vs Pugazh",
+        question: "4. Unakku college-la neraya seniors 'bro / thangachi' nu irukaanga... Avangalukkum Pugazh-kum enna difference?",
+        tag: "Real vs Casual",
+        options: [
+          { text: "Ellarum ore category dhaan, perusa difference illa.", points: 1 },
+          { text: "College seniors vida Pugazh konjam close avlo dhaan.", points: 3 },
+          { text: "Avanga college mudinja marandhuduvanga, Pugazh life-long kooda nikkura brother! 💯", points: 5 },
+          { text: "Compare panna koodadhu, Pugazh place eppovume exclusive!", points: 4 }
+        ]
+      },
+      {
+        id: 5,
+        category: "Sontha Brother vs Pugazh",
+        question: "5. Sontha brother koodave porandhavan, naano 3 months munnadi accidental-ah vandhavan... En mela unakku irukura affection real ah?",
+        tag: "Blood vs Accidental",
+        options: [
+          { text: "Chumma flow-la vandha vaartha dhaan, don't take seriously.", points: 1 },
+          { text: "Blood relation vera, accidental friends vera pa.", points: 2 },
+          { text: "Blood relation illatiyum, sontha brother alavukku Pugazh mela affection & respect irukku! ✨", points: 5 },
+          { text: "Innum time aaganum unna purinjikka, but currently solid brother!", points: 3 }
+        ]
+      },
+      {
+        id: 6,
+        category: "Best Boy Friend vs Pugazh",
+        question: "6. Unakku oru very best boy friend irukaan... Pugazh avanoda compare panna entha level?",
+        tag: "Bestie vs Brother",
+        options: [
+          { text: "Best boy friend dhaan en eppovume top priority.", points: 2 },
+          { text: "Best friend vera, brother bonding vera... Rendume equal!", points: 3 },
+          { text: "Best friend kooda sanda podalam, but Pugazh is my protective brother pillar! 🛡️", points: 4 },
+          { text: "Pugazh vandha apram en priority list-la avar dhaan top brother rank! 👑", points: 5 }
+        ]
+      },
+      {
+        id: 7,
+        category: "The Ultimate Truth Check",
+        question: "7. En kitta 'You are important to me' nu sonniye... adhu entha alavukku genuine? Honest meter on!",
+        tag: "Truth Bomb",
+        options: [
+          { text: "Chumma formality ku casually sonna vaartha dhaan.", points: 1 },
+          { text: "Konjam emotional flow-la pesi vitten.", points: 2 },
+          { text: "100% genuine! Blood connection illa naalum, un importance unmai! ❤️", points: 5 },
+          { text: "Vaarthaiyila solla maaten, actions-la prove pannuven!", points: 4 }
+        ]
+      }
+    ];
+
+    let currentQ = 0;
+    let totalScore = 0;
+    let userSelections = [];
+    let currentVerdictData = null;
+
+    // DOM Elements
+    const questionBox = document.getElementById("question-box");
+    const progressBar = document.getElementById("progress-bar");
+    const questionIndicator = document.getElementById("question-indicator");
+    const quizContainer = document.getElementById("quiz-container");
+    const resultContainer = document.getElementById("result-container");
+    const loadingState = document.getElementById("loading-state");
+    const finalScreen = document.getElementById("final-screen");
+    const resultTitle = document.getElementById("result-title");
+    const resultDesc = document.getElementById("result-desc");
+    const resultBadge = document.getElementById("result-badge");
+    const finalScoreEl = document.getElementById("final-score");
+    const scorePercentageEl = document.getElementById("score-percentage");
+    const whatsappBtn = document.getElementById("whatsapp-btn");
+    const mailBtn = document.getElementById("mail-btn");
+
+    // Play subtle synthesized chime on answer
+    function playChime(freq = 520, type = 'sine') {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } catch (e) {
+        // AudioContext not allowed or unsupported
+      }
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      const progressPercent = ((currentQ + 1) / questions.length) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+      questionIndicator.innerText = `Question ${currentQ + 1} of ${questions.length}`;
+
+      questionBox.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-pink-500/20 text-pink-300 border border-pink-500/30">
+              ${q.tag}
+            </span>
+            <span class="text-xs text-gray-400">${q.category}</span>
+          </div>
+
+          <h2 class="text-base sm:text-lg font-bold text-pink-100 leading-snug">
+            ${q.question}
+          </h2>
+
+          <div class="space-y-2.5 pt-2">
+            ${q.options.map((opt, idx) => `
+              <button onclick="handleAnswer(${idx})" class="w-full text-left p-3.5 rounded-xl bg-white/10 hover:bg-gradient-to-r hover:from-pink-600/40 hover:to-purple-600/40 border border-white/15 hover:border-pink-400/50 transition-all duration-200 active:scale-[0.98] flex items-start gap-3 group">
+                <span class="w-6 h-6 rounded-full bg-pink-500/30 group-hover:bg-pink-500 text-pink-200 group-hover:text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition">
+                  ${String.fromCharCode(65 + idx)}
+                </span>
+                <span class="text-xs sm:text-sm font-medium text-gray-100 group-hover:text-white leading-relaxed">
+                  ${opt.text}
+                </span>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAnswer = function(optIdx) {
+      playChime(440 + (optIdx * 80));
+      const selectedOption = questions[currentQ].options[optIdx];
+      totalScore += selectedOption.points;
+      
+      userSelections.push({
+        num: currentQ + 1,
+        question: questions[currentQ].question,
+        chosen: selectedOption.text,
+        points: selectedOption.points
+      });
+
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    };
+
+    async function finishQuiz() {
+      progressBar.style.width = "100%";
+      quizContainer.classList.add("hidden");
+      resultContainer.classList.remove("hidden");
+      playChime(659, 'triangle');
+
+      const maxScore = questions.length * 5; // 35
+      const percentage = Math.round((totalScore / maxScore) * 100);
+
+      let verdictTitle = "";
+      let verdictBadge = "";
+      let verdictDesc = "";
+
+      if (totalScore >= 30) {
+        verdictBadge = "👑 Tier 1: Soul Sister Status (Top VIP)";
+        verdictTitle = "Verdict: Unakku naan romba romba mukkiyam! 🥹❤️";
+        verdictDesc = "Blood relation illanalum, 3 months accidental meeting la ivlo periya pure affection vandhurukku. Sontha brother, college seniors, bestie nu periya kootam irundhalum, un life-la Pugazh place-ah yaralayum replace panna mudiyadhu! Genuine gold sister! 💖";
+      } else if (totalScore >= 22) {
+        verdictBadge = "⭐ Tier 2: Super Special Priority Sister";
+        verdictTitle = "Verdict: Most Trusted Brother Zone! 🌟";
+        verdictDesc = "College seniors kootathula Pugazh casual aal illa! Lover, best friend, sontha brother nu individual roles irundhaalum, un manasula Pugazh ku oru safe, solid and high priority brotherly place irukku! 🤝✨";
+      } else {
+        verdictBadge = "👀 Tier 3: Casual Zone / Still In Progress";
+        verdictTitle = "Verdict: Casual Friend / Safe Zone 😅";
+        verdictDesc = "3 months dhaan aagudhu la... Innum unakku Pugazh pathi full-ah therila pola! En importance ah prove panna innum neraya treats and time theva padum pola irukke! 😜";
+      }
+
+      currentVerdictData = {
+        title: verdictTitle,
+        badge: verdictBadge,
+        desc: verdictDesc,
+        score: totalScore,
+        maxScore: maxScore,
+        percentage: percentage
+      };
+
+      // Set UI Values
+      resultBadge.innerText = verdictBadge;
+      resultTitle.innerText = verdictTitle;
+      resultDesc.innerText = verdictDesc;
+      finalScoreEl.innerText = totalScore;
+      scorePercentageEl.innerText = `${percentage}% Importance`;
+
+      // Update Rankings on screen based on score
+      const rankBlood = document.getElementById("rank-blood");
+      const rankSeniors = document.getElementById("rank-seniors");
+      if (totalScore >= 30) {
+        rankBlood.innerHTML = `<span class="text-gray-300">🩸 Sontha Brother:</span><span class="font-bold text-emerald-400">Equal to Blood Brother 🫂</span>`;
+        rankSeniors.innerHTML = `<span class="text-gray-300">🎓 College Seniors:</span><span class="font-bold text-pink-400">Infinite Times Higher 🚀</span>`;
+      }
+
+      // Configure Quick Share Action Buttons
+      setupShareButtons();
+
+      // Trigger Email Dispatch to pugazh2006nadarajan@gmail.com
+      await sendEmailReport(verdictBadge);
+
+      // Reveal Final Card
+      loadingState.classList.add("hidden");
+      finalScreen.classList.remove("hidden");
+
+      // Celebrate with Confetti
+      try {
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+      } catch (e) {}
+    }
+
+    async function sendEmailReport(verdict) {
+      // Build clean HTML table for the email body
+      const breakdownRows = userSelections.map(item => `
+        <tr style="border-bottom: 1px solid #e5e7eb;">
+          <td style="padding: 10px; font-weight: 600; color: #1f2937;">Q${item.num}: ${item.question}</td>
+          <td style="padding: 10px; color: #db2777; font-weight: bold;">${item.chosen}</td>
+          <td style="padding: 10px; text-align: center; font-weight: bold; color: #4f46e5;">${item.points} pts</td>
+        </tr>
+      `).join("");
+
+      const emailHtml = `
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+          <thead>
+            <tr style="background-color: #f9fafb; color: #4b5563;">
+              <th style="padding: 10px;">Question</th>
+              <th style="padding: 10px;">Her Selection</th>
+              <th style="padding: 10px; text-align: center;">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${breakdownRows}
+          </tbody>
+        </table>
+      `;
+
+      // 1. Try Vercel Serverless Function first (/api/send-email)
+      let sentSuccessfully = false;
+      try {
+        const vercelApiRes = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            verdict: verdict,
+            totalScore: totalScore,
+            breakdownHtml: emailHtml,
+            userSelections: userSelections
+          })
+        });
+
+        if (vercelApiRes.ok) {
+          const resJson = await vercelApiRes.json();
+          if (resJson.success) {
+            sentSuccessfully = true;
+            console.log('Report dispatched via Vercel Serverless Function!');
+          }
+        }
+      } catch (e) {
+        console.warn('Vercel API route not available locally, trying FormSubmit fallback...');
+      }
+
+      // 2. Fallback to FormSubmit AJAX if running without Vercel serverless
+      if (!sentSuccessfully) {
+        try {
+          await fetch(FORMSUBMIT_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              _subject: `[Sister Quiz Alert] Score: ${totalScore}/35 - ${verdict}`,
+              _template: "table",
+              Sister_Verdict: verdict,
+              Total_Score: `${totalScore} / 35 (${currentVerdictData.percentage}%)`,
+              Sister_Answers: userSelections.map(s => `[Q${s.num}] ${s.question} -> "${s.chosen}" (${s.points} pts)`).join("\n\n")
+            })
+          });
+          console.log('Report dispatched via FormSubmit AJAX gateway!');
+        } catch (err) {
+          console.warn("Direct API dispatch notice:", err);
+        }
+      }
+    }
+
+    function setupShareButtons() {
+      const summaryText = `*Sister Verification & Importance Result for Pugazh* 💖\n\n*Verdict:* ${currentVerdictData.badge}\n*Score:* ${totalScore}/35 (${currentVerdictData.percentage}%)\n\n_"${currentVerdictData.desc.replace(/<[^>]*>?/gm, '')}"_\n\nPugazh, un importance officially locked! 🔒`;
+
+      // WhatsApp Button
+      whatsappBtn.onclick = () => {
+        const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(summaryText)}`;
+        window.open(url, '_blank');
+      };
+
+      // Email App Direct Link (mailto backup)
+      mailBtn.onclick = () => {
+        const mailto = `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent("My Sister Quiz Result for Pugazh! 👑")}&body=${encodeURIComponent(summaryText + "\n\nFull answers sent to your email inbox too!")}`;
+        window.location.href = mailto;
+      };
+    }
+
+    window.restartQuiz = function() {
+      currentQ = 0;
+      totalScore = 0;
+      userSelections = [];
+      finalScreen.classList.add("hidden");
+      loadingState.classList.remove("hidden");
+      resultContainer.classList.add("hidden");
+      quizContainer.classList.remove("hidden");
+      renderQuestion();
+    };
+
+    // Initial Render
+    renderQuestion();
+  </script>
+</body>
+</html>
